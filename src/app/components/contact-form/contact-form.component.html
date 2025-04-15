@@ -1,0 +1,10 @@
+<div class="card p-3 mt-3">
+    <form (submit)="saveContact(); $event.preventDefault()">
+      <input class="form-control mb-2" placeholder="First Name" [(ngModel)]="contact.fName" name="fName">
+      <input class="form-control mb-2" placeholder="Last Name" [(ngModel)]="contact.lName" name="lName">
+      <input class="form-control mb-2" placeholder="Phone Number" [(ngModel)]="contact.phoneNumber" name="phone">
+      <input class="form-control mb-2" placeholder="Email Address" [(ngModel)]="contact.email" name="email">
+      <button class="btn btn-primary" type="submit">{{contact.id ? 'Update' : 'Add'}} Contact</button>
+    </form>
+  </div>
+  
