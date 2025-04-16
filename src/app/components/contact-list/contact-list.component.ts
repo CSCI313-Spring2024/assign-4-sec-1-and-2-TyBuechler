@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { ContactCardComponent } from '../contact-card/contact-card.component';
-import { NgFor } from '@angular/common';
+import { ContactFormComponent } from '../contact-form/contact-form.component';
+import { NgFor, NgIf } from '@angular/common'; // ✅ ADD THIS
 
 @Component({
   selector: 'app-contact-list',
-  imports: [ContactCardComponent, NgFor],
+  standalone: true,
+  imports: [
+    ContactCardComponent,
+    ContactFormComponent,
+    NgFor,
+    NgIf // ✅ FIXES THE ERROR!
+  ],
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
@@ -27,6 +34,17 @@ export class ContactListComponent {
   onEdit(contact: any) {
     this.selectedContact = { ...contact };
   }
+
+  onAddNew() {
+    this.selectedContact = {
+      fName: '',
+      lName: '',
+      phoneNumber: '',
+      email: ''
+    };
+  }
+
+  onSave() {
+    this.selectedContact = null;
+  }
 }
-
-
